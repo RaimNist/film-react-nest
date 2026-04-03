@@ -1,7 +1,7 @@
 //TODO описать DTO для запросов к /films
 export class ScheduleDto {
   id: string;
-  daytime: Date;
+  daytime: string;
   hall: number;
   rows: number;
   seats: number;

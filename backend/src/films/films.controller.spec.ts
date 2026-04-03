@@ -1,5 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilmsController } from './films.controller';
+import { FilmsService } from './films.service';
+import { FilmsRepository } from './films.repository';
 
 describe('FilmsController', () => {
   let controller: FilmsController;
@@ -7,6 +9,16 @@ describe('FilmsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [FilmsController],
+      providers: [
+        FilmsService,
+        {
+          provide: FilmsRepository,
+          useValue: {
+            findAll: jest.fn(),
+            findScheduleById: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     controller = module.get<FilmsController>(FilmsController);
