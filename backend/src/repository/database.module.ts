@@ -1,3 +1,10 @@
+import * as crypto from 'crypto';
+
+// Polyfill для crypto в глобальной области
+if (!global.crypto) {
+  global.crypto = crypto as any;
+}
+
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
