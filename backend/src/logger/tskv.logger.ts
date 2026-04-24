@@ -2,7 +2,7 @@ import { Injectable, ConsoleLogger } from '@nestjs/common';
 
 @Injectable()
 export class TskvLogger extends ConsoleLogger {
-  formatMessage(level: string, message: any, ...optionalParams: any[]) {
+  formatMessage(level: string, message: string, ...optionalParams: unknown[]) {
     const timestamp = new Date().toISOString();
     const logMessage = {
       timestamp,
@@ -17,23 +17,23 @@ export class TskvLogger extends ConsoleLogger {
       .join('\t');
   }
 
-  log(message: any, ...optionalParams: any[]) {
+  log(message: string, ...optionalParams: unknown[]) {
     console.log(this.formatMessage('log', message, optionalParams));
   }
 
-  error(message: any, ...optionalParams: any[]) {
+  error(message: string, ...optionalParams: unknown[]) {
     console.error(this.formatMessage('error', message, optionalParams));
   }
 
-  warn(message: any, ...optionalParams: any[]) {
+  warn(message: string, ...optionalParams: unknown[]) {
     console.warn(this.formatMessage('warn', message, optionalParams));
   }
 
-  debug(message: any, ...optionalParams: any[]) {
+  debug(message: string, ...optionalParams: unknown[]) {
     console.debug(this.formatMessage('debug', message, optionalParams));
   }
 
-  verbose(message: any, ...optionalParams: any[]) {
+  verbose(message: string, ...optionalParams: unknown[]) {
     console.info(this.formatMessage('verbose', message, optionalParams));
   }
 }
